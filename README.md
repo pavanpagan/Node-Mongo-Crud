@@ -1,6 +1,6 @@
 # Node-Mongo-Crud
 
-#Prerequisites:
+# Prerequisites:
 •	Node JS - https://nodejs.org/en
 •	MongoDB – 6.0 
 o	MongoDB Compass https://www.mongodb.com/products/compass 
@@ -9,6 +9,6 @@ o	Robo 3T https://robomongo.org/
 o	https://www.postman.com/downloads/ 
 o	https://swagger.io/
 
-#Steps to run:
+# Steps to run:
   npm install
   npm start
