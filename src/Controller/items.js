@@ -1,7 +1,8 @@
-const items = {}
+const ItemModel = require('../Model/itemModel');
 const dbConfig = require('../../Config/database.config')
 const {MongoClient} = require('mongodb');
 const {ObjectId} = require('mongodb')
+const items = {}
 
 
 let connectToDB = async () => {
@@ -19,10 +20,16 @@ items.list = async (req, res) => {
 }
 
 items.save = async (req, res) => {
-  let data = req.body.data
-  let dbCollectionInfo = await connectToDB();
-  await dbCollectionInfo.collection(dbConfig.collectionName).insertMany(data);
-  res.send("Record Inserted!!")
+  let data = req.body.data;
+  let validationResponse = ItemModel.validateItem(data);
+  if(!validationResponse) {
+    let dbCollectionInfo = await connectToDB();
+    dbCollectionInfo.collection(dbConfig.collectionName).insertOne(data).then(() => {
+      res.send("Record Inserted!!")
+    })
+  } else {
+    res.send(validationResponse);
+  }
 }
 
 items.edit = async (req, res) => {
