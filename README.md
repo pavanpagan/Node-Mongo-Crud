@@ -10,5 +10,5 @@ o	https://www.postman.com/downloads/
 o	https://swagger.io/
 
 # Steps to run:
-  npm install
-  npm start
+  1. npm install
+  2. npm start
